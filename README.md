@@ -1,4 +1,14 @@
-# Challenge: First Duplicate (Introduction)
+# Challenge: Add Two Digits (Introduction)
+
+![Challenge Day 3](ChallengeDay3.png)
+
+## Run it
+
+To try and review this challenge, download it, open intex.html and open the project folder with VisualStudioCode (or your IDE of prefference).
+You can modify the main.js file which contains the solution and the test provided.
+If the problem is solved, the index.html file will appear with a green color. Otherwise, it will be appearing in red with the error output.
+
+Thanks Dylan Israel and Per Harald for creating this awesome challenges and tutorials!!
 
 ## Supporting Scrimba
 
