@@ -1,13 +1,14 @@
 function firstDuplicate(nums) {
     //  write code here.
-    
+    var reps = whichReps(nums)
+    console.log(reps)
 }
 //Returns an array with objects, each of them with the number and the index of those which are repeated.
 function whichReps(nums) {
   var reps = [];
   var elem = {
-    num: num,
-    index: index,
+    num: 0,
+    index: 0,
   };
   var count = 1;
   for (var i = 0; i < nums.length; i++) {
@@ -20,19 +21,19 @@ function whichReps(nums) {
         if (comparingNumberAdded === undefined) {
           //if we didn't add the aux element
           //First elem
-          elem.num = aux;
-          elems.index = count;
+          elem.num = nums[i];
+          elem.index = count;
           reps.unshift(elem);
           comparingNumberAdded = true;
           //Second elem
           elem.num = nums[j];
-          elems.index = count2;
+          elem.index = count2;
           reps.push(elem);
         } else {
           //if we added already aux element
           //Second elem
           elem.num = nums[j];
-          elems.index = count2;
+          elem.index = count2;
           reps.push(elem);
         }
         //increase counter of 2nd loop because we added the current element on [j]
