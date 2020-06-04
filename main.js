@@ -1,9 +1,50 @@
 function firstDuplicate(nums) {
-    //  write code here.
-    var reps = whichReps(nums)
-    console.log(reps)
+  //  write code here.
+  // var reps = whichReps(nums)
+  // var reps = repsArray(nums);
+  // console.log(reps);
+  var ww = isThereAnyRepeated(nums)
+  console.log(ww)
 }
+
+function repsArray(nums) {
+  let reps = [];
+  var elem = {
+    num: 0,
+    index: 0,
+  };
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 1; j < nums.length; j++) {
+      if (nums[i] === nums[j]) {
+        elem.index = i;
+        elem.num = nums[j];
+        reps.push(elem);
+        j++;
+      } else {
+        null;
+      }
+    }
+  }
+  if (reps.length === 0) {
+    return -1;
+  }
+  return reps;
+}
+//Needs fixing
+function isThereAnyRepeated(nums) {
+  var res
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 1; j < nums.length; j++) {
+      if (nums[i] === nums[j]) {
+        res = "there's equals";
+      }
+    }
+  }
+  return "result for " + nums + " is " + res;
+}
+
 //Returns an array with objects, each of them with the number and the index of those which are repeated.
+
 function whichReps(nums) {
   var reps = [];
   var elem = {
@@ -12,6 +53,7 @@ function whichReps(nums) {
   };
   var count = 1;
   for (var i = 0; i < nums.length; i++) {
+    console.log(count);
     for (var j = 1; j < nums.length; j++) {
       var count2 = count++;
       var comparingNumberAdded;
@@ -43,42 +85,40 @@ function whichReps(nums) {
         count2++;
       }
     }
-    count++;
+    count = 1;
   }
   return reps;
 }
 
-
-
 /**
-* Test Suite 
-*/
-describe('firstDuplicate()', () => {
-    it('returns first duplicated value', () => {
-        // arrange
-        const nums = [2, 1, 3, 5, 3, 2];
-        
-        // act
-        const result = firstDuplicate(nums);
+ * Test Suite
+ */
+describe("firstDuplicate()", () => {
+  it("returns first duplicated value", () => {
+    // arrange
+    const nums = [2, 1, 3, 5, 3, 2];
 
-        // log
-        console.log("result 1: ", result);
-        
-        // assert
-        expect(result).toBe(3);
-    });
-    
-    it('returns -1 when no duplicated values', () => {
-        // arrange
-        const nums = [2, 1, 3, 5, 4, 6];
-        
-        // act
-        const result = firstDuplicate(nums);
+    // act
+    const result = firstDuplicate(nums);
 
-        // log
-        console.log("result 2: ", result);
-        
-        // assert
-        expect(result).toBe(-1);
-    });
+    // log
+    console.log("result 1: ", result);
+
+    // assert
+    expect(result).toBe(3);
+  });
+
+  it("returns -1 when no duplicated values", () => {
+    // arrange
+    const nums = [2, 1, 3, 5, 4, 6];
+
+    // act
+    const result = firstDuplicate(nums);
+
+    // log
+    console.log("result 2: ", result);
+
+    // assert
+    expect(result).toBe(-1);
+  });
 });
