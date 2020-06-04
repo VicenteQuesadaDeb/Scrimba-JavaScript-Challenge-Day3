@@ -1,93 +1,13 @@
 function firstDuplicate(nums) {
-  //  write code here.
-  // var reps = whichReps(nums)
-  // var reps = repsArray(nums);
-  // console.log(reps);
-  var ww = isThereAnyRepeated(nums)
-  console.log(ww)
-}
-
-function repsArray(nums) {
-  let reps = [];
-  var elem = {
-    num: 0,
-    index: 0,
-  };
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (nums[i] === nums[j]) {
-        elem.index = i;
-        elem.num = nums[j];
-        reps.push(elem);
-        j++;
-      } else {
-        null;
-      }
+  let duplicatedNum = {};
+  for (let num of nums) {
+    if (duplicatedNum.hasOwnProperty(num)) {
+      return num;
     }
-  }
-  if (reps.length === 0) {
-    return -1;
-  }
-  return reps;
-}
-//Needs fixing
-function isThereAnyRepeated(nums) {
-  var res
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (nums[i] === nums[j]) {
-        res = "there's equals";
-      }
-    }
-  }
-  return "result for " + nums + " is " + res;
-}
 
-//Returns an array with objects, each of them with the number and the index of those which are repeated.
-
-function whichReps(nums) {
-  var reps = [];
-  var elem = {
-    num: 0,
-    index: 0,
-  };
-  var count = 1;
-  for (var i = 0; i < nums.length; i++) {
-    console.log(count);
-    for (var j = 1; j < nums.length; j++) {
-      var count2 = count++;
-      var comparingNumberAdded;
-      if (nums[i] === nums[j]) {
-        //if first element = next element
-        //Save repeated element
-        if (comparingNumberAdded === undefined) {
-          //if we didn't add the aux element
-          //First elem
-          elem.num = nums[i];
-          elem.index = count;
-          reps.unshift(elem);
-          comparingNumberAdded = true;
-          //Second elem
-          elem.num = nums[j];
-          elem.index = count2;
-          reps.push(elem);
-        } else {
-          //if we added already aux element
-          //Second elem
-          elem.num = nums[j];
-          elem.index = count2;
-          reps.push(elem);
-        }
-        //increase counter of 2nd loop because we added the current element on [j]
-        count2++;
-      } else {
-        //if not equal
-        count2++;
-      }
-    }
-    count = 1;
+    duplicatedNum[num] = num;
   }
-  return reps;
+  return -1;
 }
 
 /**
