@@ -1,10 +1,9 @@
 function firstDuplicate(nums) {
-  let duplicatedNum = {};
+  let duplicatedNum = [];
   for (let num of nums) {
     if (duplicatedNum.hasOwnProperty(num)) {
       return num;
     }
-
     duplicatedNum[num] = num;
   }
   return -1;
